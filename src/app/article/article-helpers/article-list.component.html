@@ -1,3 +1,8 @@
-<p>
-  article-list works!
-</p>
+<div class="card-columns">
+  <art-article-preview
+    *ngFor="let article of articles; let odd=odd;"
+    [article]="article"
+    [ngClass]="getArticleClass(article, odd)"
+    class="card"
+  ></art-article-preview>
+</div>

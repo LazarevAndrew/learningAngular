@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+
+import {Article} from '../models/article';
 
 @Component({
   selector: 'art-article-preview',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class ArticlePreviewComponent implements OnInit {
+  @Input() article: Article;
 
   constructor() { }
 

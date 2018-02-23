@@ -1,3 +1,10 @@
-<p>
-  article-preview works!
-</p>
+<div *ngIf="article.image">
+  <img [src]="article.image" class="card-img-top">
+</div>
+<div class="card-body">
+  <h5 class="card-title">{{article?.title}}</h5>
+  <p [innerHTML]="article?.description" class="card-text text-muted"></p>
+  <p class="card-text"><small class="text-muted">{{article?.createdAt}}</small></p>
+</div>
+
+
