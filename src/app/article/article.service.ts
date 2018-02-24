@@ -4,6 +4,7 @@ import { of } from 'rxjs/observable/of';
 
 import {Article} from './models/article';
 import {ARTICLES} from './mock-artciles';
+import * as _ from  'lodash';
 
 @Injectable()
 export class ArticleService {
@@ -12,6 +13,10 @@ export class ArticleService {
 
   getArticles(): Observable<Article[]> {
     return of(ARTICLES);
+  }
+
+  getArticle(slug: string): Article {
+    return _.find(ARTICLES, article => article.slug === slug);
   }
 
 }
