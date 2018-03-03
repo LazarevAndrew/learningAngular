@@ -18,11 +18,11 @@ export class ArticleListComponent implements OnInit {
 
   getArticles(): void {
     this.articleService.getArticles()
-      .subscribe(data => this.articles = data);
+      .subscribe(data => this.articles = data.articles);
   }
 
   getArticleClass(article: Article, isOdd: boolean): string {
-    if (!isOdd && article.image) return '';
+    if (!isOdd && article.image) { return ''; }
     let classes = 'text-right';
     classes += !article.image ? ' bg-light border-info' : '';
     return classes;

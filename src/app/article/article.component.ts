@@ -11,7 +11,7 @@ import { Article } from './models/article';
   styles: []
 })
 export class ArticleComponent implements OnInit {
-  private article: Article;
+  public article: Article;
 
   constructor(private articleService: ArticleService,
               private router: Router,
@@ -19,8 +19,8 @@ export class ArticleComponent implements OnInit {
               private location: Location) { }
 
   ngOnInit(): void {
-    this.article = this.route.snapshot.data['article'];
-    // this.article = this.articleService.getArticle(this.route.snapshot.params['slug']);
+    this.route.data
+      .subscribe((data: {article: Article}) => this.article = data.article);
   }
 
   goBack(): void {
