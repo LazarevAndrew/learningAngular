@@ -6,16 +6,8 @@ import { AppComponent } from './app.component';
 import { ArticleModule } from './article/article.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { ArticleComponent } from './article/article.component';
-import { ArticleListComponent } from './article/article-helpers/article-list.component';
-import { ArticleResolverService } from './article/article-resolver.service';
 
-
-export const appRoutes: Routes = [
-  { path: 'articles', component: ArticleListComponent},
-  { path: 'articles/:slug', component: ArticleComponent, resolve: { article: ArticleResolverService}},
-  { path: '', redirectTo: '/articles', pathMatch: 'full'}
-];
+export const appRoutes: Routes = [];
 
 @NgModule({
   declarations: [
