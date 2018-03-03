@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpModule } from '@angular/http';
+
 import { ArticleComponent } from './article.component';
 import { ArticleListComponent } from './article-helpers/article-list.component';
 import { ArticlePreviewComponent } from './article-helpers/article-preview.component';
@@ -18,7 +18,6 @@ export const articleRoutes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(articleRoutes),
-    HttpModule,
     CommonModule
   ],
   declarations: [ArticleComponent, ArticleListComponent, ArticlePreviewComponent, ArticleCommentsComponent],
