@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import * as _ from  'lodash';
 
 import { ApiService } from '../core/services/api.service';
 import { Article } from './models/article';
@@ -19,7 +18,9 @@ export class ArticleService {
 
   getArticle(slug: string): Observable<Article> {
     return this.apiService.get(`articles/${slug}`)
-      .pipe(map(data => <Article>data.article));
+      .pipe(
+        map(data => <Article>data.article)
+      );
   }
 
 }

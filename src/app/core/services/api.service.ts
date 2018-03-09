@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers} from '@angular/http';
+import { HttpClient, HttpErrorResponse, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ApiService {
 
-  private headers: Headers = new Headers({
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  });
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: Http) { }
-
-  get(path: string): Observable<any> {
-    return this.http.get(`https://conduit.productionready.io/api/${path}`,
-      { headers: this.headers})
-      .pipe(map((res: Response) => res.json()));
+  public get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
+    return this.http.get(`${environment.apiUrl}${path}`, { params })
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
+  private handleError(error: HttpErrorResponse) {
+    return ErrorObservable.create(error);
+  }
 }

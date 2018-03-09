@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ArticleService} from '../article.service';
 import {Article} from '../models/article';
+import { catchError } from 'rxjs/operators';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 @Component({
   selector: 'art-article-list',
@@ -18,6 +20,9 @@ export class ArticleListComponent implements OnInit {
 
   getArticles(): void {
     this.articleService.getArticles()
+      .pipe(
+        catchError(error => new ErrorObservable(error))
+      )
       .subscribe(data => this.articles = data.articles);
   }
 

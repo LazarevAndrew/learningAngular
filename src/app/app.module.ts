@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ArticleModule } from './article/article.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { ArticleModule } from './article/article.module';
 import { ApiService } from './core/services/api.service';
+import { httpInterceptorProviders } from './core/interceptors/index';
 
 export const appRoutes: Routes = [];
 
@@ -17,13 +17,15 @@ export const appRoutes: Routes = [];
   ],
   imports: [
     BrowserModule,
-    HttpModule,
     RouterModule.forRoot(appRoutes),
     ArticleModule,
     CoreModule,
     SharedModule
   ],
-  providers: [ApiService],
+  providers: [
+    ApiService,
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
