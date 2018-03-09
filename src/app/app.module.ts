@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ArticleModule } from './article/article.module';
 import { ApiService } from './core/services/api.service';
+import { ErrorsService } from './core/services/errors.service';
 import { httpInterceptorProviders } from './core/interceptors/index';
 
 export const appRoutes: Routes = [];
@@ -24,6 +25,7 @@ export const appRoutes: Routes = [];
   ],
   providers: [
     ApiService,
+    ErrorsService,
     httpInterceptorProviders
   ],
   bootstrap: [AppComponent]

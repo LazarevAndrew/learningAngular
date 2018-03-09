@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Error404Component } from './error-pages/error-404.component';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
+
+import { Error404Component } from './errors/error-404.component';
+import { ErrorAlertsComponent } from './errors/error-alerts.component';
 
 export const sharedRoutes: Routes = [
   { path: '404', component: Error404Component},
@@ -18,10 +20,12 @@ export const sharedRoutes: Routes = [
     RouterModule.forChild(sharedRoutes)
   ],
   declarations: [
-    Error404Component
+    Error404Component,
+    ErrorAlertsComponent
   ],
   exports: [
-    Error404Component
+    Error404Component,
+    ErrorAlertsComponent
   ]
 })
 export class SharedModule { }

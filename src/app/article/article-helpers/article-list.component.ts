@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {ArticleService} from '../article.service';
-import {Article} from '../models/article';
-import { catchError } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { catchError, retry } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+
+import { ArticleService} from '../article.service';
+import { Article } from '../models/article';
+import { ErrorsService } from '../../core/services/errors.service';
 
 @Component({
   selector: 'art-article-list',
@@ -12,7 +15,8 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 export class ArticleListComponent implements OnInit {
   articles: Article[];
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService,
+              private errorsService: ErrorsService) { }
 
   ngOnInit(): void {
     this.getArticles();
@@ -21,7 +25,10 @@ export class ArticleListComponent implements OnInit {
   getArticles(): void {
     this.articleService.getArticles()
       .pipe(
-        catchError(error => new ErrorObservable(error))
+        catchError((error: HttpErrorResponse) => {
+          this.errorsService.pushError(error);
+          return new ErrorObservable(error);
+        })
       )
       .subscribe(data => this.articles = data.articles);
   }

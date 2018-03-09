@@ -10,6 +10,7 @@ import { FooterComponent } from './layout/footer.component';
     RouterModule
   ],
   declarations: [HeaderComponent, FooterComponent],
-  exports: [HeaderComponent, FooterComponent]
+  exports: [HeaderComponent, FooterComponent],
+  providers: []
 })
 export class CoreModule { }
