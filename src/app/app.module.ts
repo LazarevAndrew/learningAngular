@@ -9,6 +9,8 @@ import { ArticleModule } from './article/article.module';
 import { ApiService } from './core/services/api.service';
 import { ErrorsService } from './core/services/errors.service';
 import { httpInterceptorProviders } from './core/interceptors/index';
+import { AuthModule } from './auth/auth.module';
+import { UserService } from './core/services/user.service';
 
 export const appRoutes: Routes = [];
 
@@ -21,10 +23,12 @@ export const appRoutes: Routes = [];
     RouterModule.forRoot(appRoutes),
     ArticleModule,
     CoreModule,
+    AuthModule,
     SharedModule
   ],
   providers: [
     ApiService,
+    UserService,
     ErrorsService,
     httpInterceptorProviders
   ],

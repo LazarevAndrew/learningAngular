@@ -7,9 +7,9 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'art-error-alerts',
   template: `
-    <div *ngFor='let error of errors | async'
+    <div *ngFor='let error of errors | async; let i = index'
          class="alert alert-danger" role="alert">
-        {{error.error.status}} __ {{error.error.error}}
+        Error ({{i+1}}) :  {{error.status}} - see console
     </div>
   `,
   styles: []

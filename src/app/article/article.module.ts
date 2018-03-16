@@ -11,7 +11,9 @@ import { ArticleResolverService } from './article-resolver.service';
 
 export const articleRoutes: Routes = [
   { path: 'articles', component: ArticleListComponent},
-  { path: 'articles/:slug', component: ArticleComponent, resolve: { article: ArticleResolverService}},
+  { path: 'articles/:slug', component: ArticleComponent,
+    resolve: { article: ArticleResolverService}
+  },
   { path: '', redirectTo: '/articles', pathMatch: 'full'}
 ];
 

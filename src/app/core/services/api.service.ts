@@ -12,13 +12,10 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   public get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${environment.apiUrl}${path}`, { params })
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.get(`${environment.apiUrl}${path}`, { params });
   }
 
-  private handleError(error: HttpErrorResponse) {
-    return ErrorObservable.create(error);
+  public post(path: string, body: Object = {}): Observable<any> {
+    return this.http.post(`${environment.apiUrl}${path}`, body);
   }
 }
