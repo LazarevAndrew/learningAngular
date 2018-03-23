@@ -10,6 +10,11 @@ import { Observable } from 'rxjs/Observable';
     <div *ngFor='let error of errors | async; let i = index'
          class="alert alert-danger" role="alert">
         Error ({{i+1}}) :  {{error.status}} - see console
+
+      <button (click)="removeAlert(i)" 
+              type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   `,
   styles: []
@@ -24,5 +29,9 @@ export class ErrorAlertsComponent implements OnInit {
 
   public get errors(): Observable<HttpErrorResponse[]> {
     return this.errorsService.errors;
+  }
+
+  public removeAlert(index): void {
+    this.errorsService.removeAlert(index);
   }
 }

@@ -21,4 +21,8 @@ export class ErrorsService {
     this.errors$.next([...this.errorArray]);
   }
 
+  removeAlert(index) {
+    this.errorArray.splice(index, 1);
+    this.errors$.next([...this.errorArray]);
+  }
 }

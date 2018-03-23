@@ -8,7 +8,6 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 import { ErrorsService } from '../core/services/errors.service';
 import { UserService } from '../core/services/user.service';
-import { User } from '../core/models/user';
 
 @Component({
   selector: 'art-sign-in',

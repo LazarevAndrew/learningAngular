@@ -8,15 +8,11 @@ import { UserService } from '../services/user.service';
   styles: []
 })
 export class HeaderComponent implements OnInit {
-  public isAuthenticated: boolean;
   public user: User;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.isAuthenticated
-      .subscribe(isAuthenticated => this.isAuthenticated = isAuthenticated);
-
     this.userService.currentUser
       .subscribe(user => this.user = user);
   }

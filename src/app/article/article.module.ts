@@ -10,17 +10,17 @@ import { ArticleService } from './article.service';
 import { ArticleResolverService } from './article-resolver.service';
 
 export const articleRoutes: Routes = [
-  { path: 'articles', component: ArticleListComponent},
+  { path: 'articles', component: ArticleListComponent },
   { path: 'articles/:slug', component: ArticleComponent,
     resolve: { article: ArticleResolverService}
   },
-  { path: '', redirectTo: '/articles', pathMatch: 'full'}
+  { path: '', redirectTo: '/articles', pathMatch: 'full' }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(articleRoutes),
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [ArticleComponent, ArticleListComponent, ArticlePreviewComponent, ArticleCommentsComponent],
   exports: [ArticleComponent, ArticleListComponent, ArticlePreviewComponent, ArticleCommentsComponent],

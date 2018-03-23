@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { Error404Component } from './errors/error-404.component';
 import { ErrorAlertsComponent } from './errors/error-alerts.component';
+import { ShowAuthedDirective } from './directives/show-authed.directive';
 
 export const sharedRoutes: Routes = [
   { path: '404', component: Error404Component }
@@ -22,14 +23,16 @@ export const sharedRoutes: Routes = [
   ],
   declarations: [
     Error404Component,
-    ErrorAlertsComponent
+    ErrorAlertsComponent,
+    ShowAuthedDirective
   ],
   exports: [
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
     Error404Component,
-    ErrorAlertsComponent
+    ErrorAlertsComponent,
+    ShowAuthedDirective
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+  <div class="col-10 col-sm-8 col-md-4">
+    <div *ngIf="user.image" class="mt-4 mb-4">
+      <img [src]="user.image" alt="" class="rounded border border-info" style="width: 100%">
+    </div>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">User Name</label>
+        <input formControlName="username"
+               type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter User Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input formControlName="email"
+               type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="username">User Image</label>
+        <input formControlName="image"
+               type="text" class="form-control" id="image" aria-describedby="imageHelp" placeholder="Past image path">
+      </div>
+      <div class="form-group">
+        <label for="username">Bio</label>
+        <textarea formControlName="bio"
+                  rows="3" class="form-control" id="bio" aria-describedby="usernameHelp" placeholder="Enter Bio"></textarea>
+      </div>
+      <button [disabled]="!profileForm.valid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

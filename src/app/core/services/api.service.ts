@@ -18,4 +18,8 @@ export class ApiService {
   public post(path: string, body: Object = {}): Observable<any> {
     return this.http.post(`${environment.apiUrl}${path}`, body);
   }
+
+  public put(path: string, body: Object = {}): Observable<any> {
+    return this.http.put(`${environment.apiUrl}${path}`, body);
+  }
 }

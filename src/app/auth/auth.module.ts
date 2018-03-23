@@ -15,7 +15,7 @@ export const authRoutes: Routes = [
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(authRoutes)
+    RouterModule
   ],
   declarations: [SignUpComponent, SignInComponent],
   exports: [SignUpComponent]
